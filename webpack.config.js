@@ -7,17 +7,31 @@ module.exports = {
     entry: './src/app.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].js'
+        filename: 'js/app.js'
     },
     devServer: {
-        host: 'localhost',
-        port: '3004',
-        open: true
+        contentBase: path.resolve(__dirname, 'dist'),
+        port: 3003,
+        open: true,
+        hot: true,
+        historyApiFallback: true,
+        proxy: {
+            '/manage': {
+                target: 'http://admintest.happymmall.com',
+                changeOrigin: true
+            },
+            '/user': {
+                target: 'http://admintest.happymmall.com',
+                changeOrigin: true
+            }
+        }
     },
     resolve: {
         alias: {
             page: path.resolve(__dirname, 'src/page'),
-            component: path.resolve(__dirname, 'src/component')
+            component: path.resolve(__dirname, 'src/component'),
+            util: path.resolve(__dirname, 'src/util'),
+            service: path.resolve(__dirname, 'src/service')
         }
     },
     module: {
@@ -74,6 +88,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'js/base.js'
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
