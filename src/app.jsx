@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
 import Login from 'page/login/index.jsx'
 import Home from 'page/home/index.jsx'
 import ErrorPage from 'page/error/index.jsx'
@@ -17,7 +17,7 @@ class App extends React.Component{
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route path="/product" component={ProductRouter}/>
-                    <Route path="/product-category" component={Home}/>
+                    <Route path="/product-category" component={ProductRouter}/>
                     <Route path="/user/index" component={UserList}/>
                     <Redirect exact from="/user" to="/user/index" />
                     <Route component={ErrorPage}/>

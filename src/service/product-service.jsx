@@ -86,6 +86,13 @@ class Product{
             data: product
         })
     }
+    updateCategoryName(category){
+        return _mm.request({
+            type: 'post',
+            url: '/manage/category/set_category_name.do',
+            data: category
+        })
+    }
     getCategoryList(parentCategoryId){
         return _mm.request({
             type: 'post',
@@ -93,6 +100,13 @@ class Product{
             data: {
                 categoryId: parentCategoryId
             }
+        })
+    }
+    saveCategory(category){
+        return _mm.request({
+            type: 'post',
+            url: '/manage/category/add_category.do',
+            data: category
         })
     }
 }

@@ -14,7 +14,7 @@ module.exports = {
         port: 3003,
         open: true,
         hot: true,
-        historyApiFallback: true,
+        //historyApiFallback: true,
         proxy: {
             '/manage': {
                 target: 'http://admintest.happymmall.com',
